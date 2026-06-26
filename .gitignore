@@ -1,0 +1,48 @@
+# Rust / Cargo
+/target/
+**/target/
+.cargo-checksum.json
+
+# If this is an application you may want to keep Cargo.lock; adjust if needed
+Cargo.lock
+
+# Build artifacts
+*.rlib
+*.so
+*.dylib
+*.dll
+*.o
+*.rmeta
+
+# Debug / profiling
+*.prof
+*.dSYM/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment and secrets
+.env
+.env.*.local
+*.pem
+*.key
+
+# Logs and coverage
+*.log
+coverage/
+lcov-report/
+
+# Python (if present)
+__pycache__/
+*.py[cod]
+
+# Nix / build outputs
+result
+/flake.lock

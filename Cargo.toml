@@ -1,0 +1,98 @@
+[package]
+name = "ai-research-agent"
+version = "0.1.0"
+edition = "2021"
+description = "A production-ready AI research agent built with Rig framework"
+authors = ["Your Name <your.email@example.com>"]
+license = "MIT"
+readme = "README.md"
+keywords = ["ai", "agent", "llm", "research", "rust"]
+categories = ["command-line-utilities", "science"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# =============================================================================
+# RIG FRAMEWORK - Core AI agent functionality
+# =============================================================================
+# Rig is a Rust library for building LLM-powered applications.
+# We enable the 'ollama' feature to use local models via Ollama.
+# Learn more: https://docs.rs/rig-core
+rig-core = { version = "0.27", features = ["derive"] }
+
+# =============================================================================
+# ASYNC RUNTIME - Tokio for async/await support
+# =============================================================================
+# Tokio is the most popular async runtime in Rust.
+# 'full' enables all features including:
+# - rt-multi-thread: Multi-threaded runtime
+# - macros: The #[tokio::main] attribute macro
+# - time: Timers and delays (for rate limiting)
+# - sync: Synchronization primitives
+tokio = { version = "1", features = ["full"] }
+
+# =============================================================================
+# SERIALIZATION - JSON handling for API responses
+# =============================================================================
+# Serde is Rust's de-facto serialization framework.
+# 'derive' feature enables #[derive(Serialize, Deserialize)] macros.
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# =============================================================================
+# HTTP CLIENT - For web search API calls
+# =============================================================================
+# Reqwest is a high-level HTTP client built on hyper.
+# 'json' feature adds convenient .json() methods for requests/responses.
+reqwest = { version = "0.12", features = ["json", "cookies"] }
+
+# =============================================================================
+# WEB SEARCH - DuckDuckGo integration (FREE!)
+# =============================================================================
+# Using duckduckgo_search for free web searches without API keys.
+# duckduckgo_search = "0.1"
+
+# =============================================================================
+# LOGGING - Structured logging with tracing
+# =============================================================================
+# Tracing provides structured, async-aware logging.
+# Much better than println! for production applications.
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# =============================================================================
+# ERROR HANDLING - Ergonomic error management
+# =============================================================================
+# anyhow: For application-level errors with context
+# thiserror: For library-level custom error types with derive macros
+anyhow = "1"
+thiserror = "2"
+
+# =============================================================================
+# CLI - Command-line argument parsing
+# =============================================================================
+# Clap with derive feature for declarative CLI definitions.
+# Much cleaner than manual argument parsing!
+clap = { version = "4", features = ["derive", "env"] }
+
+# =============================================================================
+# CONFIGURATION - Environment variable management
+# =============================================================================
+# dotenvy loads .env files into environment variables.
+# Great for local development without hardcoding secrets.
+dotenvy = "0.15"
+
+# =============================================================================
+# UTILITIES
+# =============================================================================
+# async-trait: Required for async functions in traits (Rust limitation)
+# futures: Additional async utilities
+# urlencoding: URL encoding for search queries
+async-trait = "0.1"
+futures = "0.3"
+urlencoding = "2.1"
+
+# =============================================================================
+# DATE/TIME - Used to convert Yahoo Finance unix timestamps into readable dates
+# =============================================================================
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
